@@ -20,6 +20,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+//app.MapGet("/", () => Results.Redirect("/Pages/Login.cshtml"));
+
 app.MapRazorPages();
 
 app.Run();
