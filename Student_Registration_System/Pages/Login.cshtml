@@ -4,18 +4,18 @@
     ViewData["Title"] = "Login";
 }
 
-<link rel="stylesheet" href="~/css/login.css" />
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
 
-<h2>@ViewData["Title"]</h2>
-
-<form method="post">
-    <div>
-        <label>Username:</label>
-        <input name="Username" />
-    </div>
-    <div>
-        <label>Password:</label>
-        <input type="password" name="Password" />
-    </div>
-    <button type="submit">Login</button>
-</form>
+    <form method="post">
+        <div class="mb-3">
+            <label for="Username" class="form-label">Username:</label>
+            <input type="text" class="form-control" id="Username" name="Username" />
+        </div>
+        <div class="mb-3">
+            <label for="Password" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="Password" name="Password" />
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>

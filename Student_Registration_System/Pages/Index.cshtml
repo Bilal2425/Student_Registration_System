@@ -1,20 +1,26 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home Page";
 }
 
-<h1>Welcome to the Home Page</h1>
+<div class="container mt-5">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Welcome to the Home Page</h1>
+    </div>
 
-@if (User.Identity.IsAuthenticated)
-{
-    <p>Hello, @User.Identity.Name!</p>
-    <p><a asp-page="/Logout">Logout</a></p>
-}
-else
-{
-    <p>
-        If you are already registered, please <a asp-page="/Login">login</a>.
-        If you are a new user, please <a asp-page="/Register">register</a>.
-    </p>
-}
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="text-center">
+            <p class="lead">Hello, <strong>@User.Identity.Name</strong>!</p>
+            <p><a class="btn btn-danger" asp-page="/Logout">Logout</a></p>
+        </div>
+    }
+    else
+    {
+        <div class="text-center">
+            <p class="lead">If you are already registered, please <a class="btn btn-primary" asp-page="/Login">login</a>.</p>
+            <p class="lead">If you are a new user, please <a class="btn btn-success" asp-page="/Register">register</a>.</p>
+        </div>
+    }
+</div>

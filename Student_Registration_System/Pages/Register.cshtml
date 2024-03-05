@@ -4,21 +4,24 @@
     ViewData["Title"] = "Register";
 }
 
-<link rel="stylesheet" href="~/css/register.css" />
-<h2>@ViewData["Title"]</h2>
+<div class="container">
+    <main role="main" class="pb-3">
+        <h2>@ViewData["Title"]</h2>
 
-<form method="post">
-    <div>
-        <label>Username:</label>
-        <input name="Username" />
-    </div>
-    <div>
-        <label>Password:</label>
-        <input type="password" name="Password" />
-    </div>
-    <div>
-        <label>Confirm Password:</label>
-        <input type="password" name="ConfirmPassword" />
-    </div>
-    <button type="submit">Register</button>
-</form>
+        <form method="post">
+            <div class="mb-3">
+                <label for="Username" class="form-label">Username:</label>
+                <input type="text" class="form-control" id="Username" name="Username" />
+            </div>
+            <div class="mb-3">
+                <label for="Password" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="Password" name="Password" />
+            </div>
+            <div class="mb-3">
+                <label for="ConfirmPassword" class="form-label">Confirm Password:</label>
+                <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" />
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </main>
+</div>

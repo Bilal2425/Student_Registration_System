@@ -1,7 +1,10 @@
+using Microsoft.AspNetCore.Builder;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
 
 var app = builder.Build();
 
@@ -20,8 +23,18 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-//app.MapGet("/", () => Results.Redirect("/Pages/Login.cshtml"));
+//app.MapGet("/", () => Results.Redirect("/Pages/Login"));
 
 app.MapRazorPages();
 
+//app.MapRazorPages(options =>
+//{
+//    options.Conventions.AddPageRoute("/Login", "");
+//});
+
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "/Pages/Login");
+
 app.Run();
+
