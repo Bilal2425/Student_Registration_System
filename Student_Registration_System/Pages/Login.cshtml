@@ -1,5 +1,5 @@
 ﻿@page
-@model LoginModel
+@model Student_Registration_System.Models.User
 @{
     ViewData["Title"] = "Login";
 }
@@ -7,15 +7,22 @@
 <div class="container">
     <h2>@ViewData["Title"]</h2>
 
-    <form method="post">
+    <form method="post" action = "/api/Login/LoginUser">
         <div class="mb-3">
             <label for="Username" class="form-label">Username:</label>
-            <input type="text" class="form-control" id="Username" name="Username" />
+            <input type="text" class="form-control" id="Username" name="Username" value="@Model?.UserName " />
         </div>
         <div class="mb-3">
             <label for="Password" class="form-label">Password:</label>
-            <input type="password" class="form-control" id="Password" name="Password" />
+            <input type="password" class="form-control" id="Password" name="Password" value="@Model?.Password" />
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary" onclick="login()">Login</button>
     </form>
 </div>
+
+<script>
+    function login() {
+        // Submit the form programmatically
+        document.querySelector('form').submit();
+    }
+</script>
