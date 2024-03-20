@@ -9,6 +9,7 @@
   <ItemGroup>
 	<!-- Add the following PackageReference for Microsoft.EntityFrameworkCore -->
 	<PackageReference Include="Dapper" Version="2.1.35" />
+	<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	<PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
 	<!-- You can specify the version you want, or use "LatestVersion" to get the latest stable version -->
   </ItemGroup>

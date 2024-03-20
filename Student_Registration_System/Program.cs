@@ -10,10 +10,11 @@ builder.Services.AddRazorPages();
 
 // Configure the database connection
 var configuration = builder.Configuration;
-var connectionString = configuration.GetConnectionString("DefaultConnection");
+var connectionString = configuration.GetConnectionString("SqlServerConnection");
 builder.Services.AddTransient<IDbConnection>(c => new SqlConnection(connectionString));
 
-
+builder.Services.AddControllersWithViews()
+    .AddControllersAsServices(); // This line is crucial for controller dependency injection
 
 
 var app = builder.Build();
@@ -33,18 +34,10 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-//app.MapGet("/", () => Results.Redirect("/Pages/Login"));
+
 
 app.MapRazorPages();
-
-//app.MapRazorPages(options =>
-//{
-//    options.Conventions.AddPageRoute("/Login", "");
-//});
-
-//app.MapControllerRoute(
-//    name: "default",
-//    pattern: "/Pages/Login");
+app.MapControllers();
 
 app.Run();
 
