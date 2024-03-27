@@ -14,4 +14,12 @@
 	<!-- You can specify the version you want, or use "LatestVersion" to get the latest stable version -->
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Repository\" />
+    <None Remove="Business\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repository\" />
+    <Folder Include="Business\" />
+  </ItemGroup>
 </Project>

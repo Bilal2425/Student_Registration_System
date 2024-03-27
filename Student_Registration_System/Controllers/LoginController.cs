@@ -1,10 +1,8 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using Dapper;
+using Student_Registration_System.Business;
 using Student_Registration_System.Models;
+using System;
 
 namespace Student_Registration_System.Controllers
 {
@@ -12,38 +10,27 @@ namespace Student_Registration_System.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private readonly string? _connectionString;
+        private readonly UserManager _userManager;
 
         public LoginController(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("SqlServerConnection");
+            _userManager = new UserManager(configuration);
         }
-
-  
 
         [HttpPost]
         public IActionResult LoginUser([FromBody] User model)
         {
             try
             {
-                using (var connection = new SqlConnection(_connectionString))
+                var user = _userManager.GetUser(model.UserName, model.Password);
+
+                if (user != null)
                 {
-                    connection.Open();
-
-                    string query = "SELECT * FROM users WHERE username = @UserName AND password = @Password";
-
-                    var user = connection.QueryFirstOrDefault<User>(query, new { model.UserName, model.Password });
-
-                    if (user != null)
-                    {
-                        // Authentication successful
-                        // You may perform additional actions here if needed
-                        return Ok("Login successful");
-                    }
-                    else
-                    {
-                        return Unauthorized("Invalid username or password");
-                    }
+                    return Ok("Login successful");
+                }
+                else
+                {
+                    return Unauthorized("Invalid username or password");
                 }
             }
             catch (Exception ex)
